@@ -1,0 +1,63 @@
+{
+	"ImportPath": "github.com/espebra/filebin",
+	"GoVersion": "go1.11",
+	"GodepVersion": "v80",
+	"Deps": [
+		{
+			"ImportPath": "github.com/GeertJohan/go.rice",
+			"Rev": "0af3f3b09a0a8b391f63ab52ba5ab50f84fabd30"
+		},
+		{
+			"ImportPath": "github.com/GeertJohan/go.rice/embedded",
+			"Rev": "0af3f3b09a0a8b391f63ab52ba5ab50f84fabd30"
+		},
+		{
+			"ImportPath": "github.com/daaku/go.zipexe",
+			"Rev": "a5fe2436ffcb3236e175e5149162b41cd28bd27d"
+		},
+		{
+			"ImportPath": "github.com/disintegration/imaging",
+			"Comment": "v1.6.0",
+			"Rev": "5362c131d56305ce787e79a5b94ffc956df00d62"
+		},
+		{
+			"ImportPath": "github.com/dustin/go-humanize",
+			"Comment": "v1.0.0",
+			"Rev": "9f541cc9db5d55bce703bd99987c9d5cb8eea45e"
+		},
+		{
+			"ImportPath": "github.com/gorilla/handlers",
+			"Comment": "v1.4.0-5-g7e6a874",
+			"Rev": "7e6a874cdc0efb71a260254cc0e30d5415b6a5bb"
+		},
+		{
+			"ImportPath": "github.com/gorilla/mux",
+			"Comment": "v1.7.0-1-g8559a4f",
+			"Rev": "8559a4f775fc329165fe32bd4c2543de8ada8fce"
+		},
+		{
+			"ImportPath": "github.com/kardianos/osext",
+			"Rev": "ae77be60afb1dcacde03767a8c37337fad28ac14"
+		},
+		{
+			"ImportPath": "github.com/rwcarlsen/goexif/exif",
+			"Rev": "b1fd11e07dc5bc0d2ca3b79d28cbdf3c6d186247"
+		},
+		{
+			"ImportPath": "github.com/rwcarlsen/goexif/tiff",
+			"Rev": "b1fd11e07dc5bc0d2ca3b79d28cbdf3c6d186247"
+		},
+		{
+			"ImportPath": "golang.org/x/image/bmp",
+			"Rev": "ef4a1470e0dc5915f2f5fa04a28eeab72c6936a4"
+		},
+		{
+			"ImportPath": "golang.org/x/image/tiff",
+			"Rev": "ef4a1470e0dc5915f2f5fa04a28eeab72c6936a4"
+		},
+		{
+			"ImportPath": "golang.org/x/image/tiff/lzw",
+			"Rev": "ef4a1470e0dc5915f2f5fa04a28eeab72c6936a4"
+		}
+	]
+}

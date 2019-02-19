@@ -8,7 +8,7 @@
 //
 // In particular, it implements LZW as used by the TIFF file format, including
 // an "off by one" algorithmic difference when compared to standard LZW.
-package lzw // import "golang.org/x/image/tiff/lzw"
+package lzw
 
 /*
 This file was branched from src/pkg/compress/lzw/reader.go in the
@@ -147,6 +147,7 @@ func (d *decoder) Read(b []byte) (int, error) {
 // litWidth is the width in bits of literal codes.
 func (d *decoder) decode() {
 	// Loop over the code stream, converting codes into decompressed bytes.
+loop:
 	for {
 		code, err := d.read(d)
 		if err != nil {
@@ -154,8 +155,7 @@ func (d *decoder) decode() {
 				err = io.ErrUnexpectedEOF
 			}
 			d.err = err
-			d.flush()
-			return
+			break
 		}
 		switch {
 		case code < d.clear:
@@ -174,9 +174,8 @@ func (d *decoder) decode() {
 			d.last = decoderInvalidCode
 			continue
 		case code == d.eof:
-			d.flush()
 			d.err = io.EOF
-			return
+			break loop
 		case code <= d.hi:
 			c, i := code, len(d.output)-1
 			if code == d.hi {
@@ -206,8 +205,7 @@ func (d *decoder) decode() {
 			}
 		default:
 			d.err = errors.New("lzw: invalid code")
-			d.flush()
-			return
+			break loop
 		}
 		d.last, d.hi = code, d.hi+1
 		if d.hi+1 >= d.overflow { // NOTE: the "+1" is where TIFF's LZW differs from the standard algorithm.
@@ -219,13 +217,10 @@ func (d *decoder) decode() {
 			}
 		}
 		if d.o >= flushBuffer {
-			d.flush()
-			return
+			break
 		}
 	}
-}
-
-func (d *decoder) flush() {
+	// Flush pending output.
 	d.toRead = d.output[:d.o]
 	d.o = 0
 }
